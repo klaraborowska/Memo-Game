@@ -38,16 +38,48 @@ html {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(4, 1fr);
       grid-gap: 30px;
-      width: 550px;
-      height: 550px;
-      border: 1px solid #000;
+      max-width: 650px;
+      min-height: 650px;
       justify-content: center;
       align-content: center;
+      background-color: lightsalmon;
+      border-radius: 7px;
   }
 
   .card {
-      width: 100px;
-      height: 100px;
-      border: 1px solid #000;
-      border-radius: 7px;
+      height: 125px;
+      width: 125px;
+      position: relative;
+      perspective: 400px;
   }
+
+  .card-side {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      backface-visibility: hidden;
+      border-radius: 7px;
+      transition: all 0.5s;
+  }
+
+/**** FOR TESTING *****/
+
+  .card-front {
+      background-color: grey;
+  }
+
+  .card-back {
+      transform: rotateY(180deg);
+      background-color:#fff;
+  }
+
+  .card:hover .card-front {
+      transform: rotateY(-180deg);
+  }
+
+  .card:hover .card-back {
+    transform: rotateY(0);
+}
