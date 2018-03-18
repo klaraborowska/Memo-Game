@@ -1,7 +1,7 @@
 
-// shuffle card when click on game settings --> will be changed to start/refresh button
+// shuffle card when click on refresh button
 
-document.querySelector(".settings").addEventListener("click", function() {
+document.querySelector(".restart-button").addEventListener("click", function() {
     shuffleCards();
 });
 

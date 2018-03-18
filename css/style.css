@@ -16,7 +16,7 @@ html {
   }
 
   .wrapper {
-      max-width: 1140px;
+      max-width: 750px;
       margin: 20px auto;
       text-align: center;
   }
@@ -27,8 +27,31 @@ html {
   /***** GAME SECTION *****/
 
   .game {
-      padding: 50px;
+    padding: 50px;
   }
+
+  /* Game settings */
+
+  .game-settings {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 30px;
+      font-size: 18px;
+  }
+
+  .flaticon-favorite::before,
+  .flaticon-exchange::before {
+      margin-left: 0;
+  }
+
+  .restart-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  /* Game cards */
 
   .card-list {
       margin: 10px auto;
@@ -51,6 +74,7 @@ html {
       width: 125px;
       position: relative;
       perspective: 400px;
+      cursor: pointer;
   }
 
   .card-side {
