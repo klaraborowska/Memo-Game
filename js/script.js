@@ -21,8 +21,9 @@ document.querySelector(".restart-button").addEventListener("click", function() {
     star[1].classList.remove("hidden-star");
     star[2].classList.remove("hidden-star");
 
+    seconds = 0;
+    minutes = 0;
 
-    
 });
 
 // shuffle card function, randomly replace icon on cards
@@ -68,10 +69,10 @@ cardGame.addEventListener("click", function(event) {
             document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
             
             switch(moves) {
-                case 10:
+                case 13:
                 star[2].classList.add("hidden-star");
                 break;
-                case 20:
+                case 22:
                 star[1].classList.add("hidden-star");
                 break;
                 case 30:
@@ -99,3 +100,24 @@ function hideCard(x, y) {
         y.classList.remove("back-active");
     }
 }
+
+
+//set timer
+const time = document.querySelector(".timer");
+let seconds = 0;
+let minutes = 0;
+
+function counter() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes += 1;
+    }
+	time.innerHTML = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    showTime();
+}
+
+function showTime() {
+    setTimeout(counter, 1000);
+}
+showTime();    
