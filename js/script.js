@@ -1,15 +1,27 @@
 const cardGame = document.querySelector(".card-list");
+const star = document.querySelectorAll(".flaticon-favorite");
 
+shuffleCards();
 
-// shuffle card when click on refresh button
+// reset game settings when click on refresh button
 document.querySelector(".restart-button").addEventListener("click", function() {
     shuffleCards();
+
     const cardFront = document.querySelectorAll(".card-front");
     const cardBack = document.querySelectorAll(".card-back");
-
     for (let i = 0; i < cardFront.length; i++) {
         hideCard(cardFront[i], cardBack[i]);
     }
+    
+    moves = 0;
+    document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
+    gameRound = 2;
+
+    star[0].classList.remove("hidden-star");
+    star[1].classList.remove("hidden-star");
+    star[2].classList.remove("hidden-star");
+
+
     
 });
 
@@ -46,15 +58,26 @@ cardGame.addEventListener("click", function(event) {
         }
 
         //happens, when two cards are open
-        if (gameRound === 0) {
+        if (gameRound == 0) {
 
             //reset gameround
             gameRound = 2;
 
             //add one move
-            moves +=1;
-            console.log("moves: " + moves);
+            moves += 1;
+            document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
             
+            switch(moves) {
+                case 10:
+                star[2].classList.add("hidden-star");
+                break;
+                case 20:
+                star[1].classList.add("hidden-star");
+                break;
+                case 30:
+                star[0].classList.add("hidden-star");
+            }
+
             //compares, if cards have the same icons, if not, closes the cards
             if (previousSrc !== back.firstElementChild.src) {
                 setTimeout(hideCard, 1000, front, back);
@@ -62,6 +85,7 @@ cardGame.addEventListener("click", function(event) {
             }
         }
        
+        //store parameteres to compare cards in game round
         previousSrc = back.firstElementChild.src;
         previousFront = front;
         previousBack = back;

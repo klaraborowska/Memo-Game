@@ -107,3 +107,7 @@ html {
   .back-active {
     transform: rotateY(0);
 }
+
+.hidden-star {
+    visibility: hidden;
+}
