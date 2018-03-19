@@ -1,8 +1,16 @@
 const cardGame = document.querySelector(".card-list");
 
+
 // shuffle card when click on refresh button
 document.querySelector(".restart-button").addEventListener("click", function() {
     shuffleCards();
+    const cardFront = document.querySelectorAll(".card-front");
+    const cardBack = document.querySelectorAll(".card-back");
+
+    for (let i = 0; i < cardFront.length; i++) {
+        hideCard(cardFront[i], cardBack[i]);
+    }
+    
 });
 
 // shuffle card function, randomly replace icon on cards
@@ -24,16 +32,16 @@ let previousSrc;
 
 //add event listener to card list
 cardGame.addEventListener("click", function(event) {
-    const frontCard = event.target;
-    const backCard = event.target.nextElementSibling;
+    const front = event.target;
+    const back = event.target.nextElementSibling;
 
     //check if the clicked element is a div with a class "card-front"
-    if (frontCard.nodeName === "DIV" && frontCard.classList.contains("card-front")) {
+    if (front.nodeName === "DIV" && front.classList.contains("card-front")) {
 
         //check if the clickd element doesn't have the class "front-inacitive" (in order not to add the second the same class)
-        if (!frontCard.classList.contains("front-inactive")) {
-            frontCard.classList.add("front-inactive");
-            backCard.classList.add("back-active");
+        if (!front.classList.contains("front-inactive")) {
+            front.classList.add("front-inactive");
+            back.classList.add("back-active");
             gameRound -= 1;
         }
 
@@ -47,18 +55,16 @@ cardGame.addEventListener("click", function(event) {
             moves +=1;
             console.log("moves: " + moves);
             
-            //compares, if cards have the same icons
-            if (previousSrc !== backCard.firstElementChild.src) {
-                hideCard(frontCard, backCard);
-                hideCard(previousFront, previousBack);
+            //compares, if cards have the same icons, if not, closes the cards
+            if (previousSrc !== back.firstElementChild.src) {
+                setTimeout(hideCard, 1000, front, back);
+                setTimeout(hideCard, 1000, previousFront, previousBack);
             }
-            
         }
-    
        
-        previousSrc = backCard.firstElementChild.src;
-        previousFront = frontCard;
-        previousBack = backCard;
+        previousSrc = back.firstElementChild.src;
+        previousFront = front;
+        previousBack = back;
     } 
 });
 
