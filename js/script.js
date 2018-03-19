@@ -1,7 +1,9 @@
 const cardGame = document.querySelector(".card-list");
 const star = document.querySelectorAll(".flaticon-favorite");
+const time = document.querySelector(".timer");
+let seconds, minutes, gameRound, moves, previousSrc;
 
-shuffleCards();
+init();
 
 // reset game settings when click on refresh button
 document.querySelector(".restart-button").addEventListener("click", function() {
@@ -23,25 +25,8 @@ document.querySelector(".restart-button").addEventListener("click", function() {
 
     seconds = 0;
     minutes = 0;
-
 });
 
-// shuffle card function, randomly replace icon on cards
-function shuffleCards() {
-    const cards = document.querySelectorAll(".card-back img");
-    for (let i = 0; i < cards.length; i++) {
-        let random = Math.floor(Math.random() * (cards.length - 1));
-
-        let a = cards[i].src;
-        cards[i].src = cards[random].src;
-        cards[random].src =  a;
-      }
-}
-
-
-let gameRound = 2;
-let moves = 0;
-let previousSrc;
 
 //add event listener to card list
 cardGame.addEventListener("click", function(event) {
@@ -93,7 +78,19 @@ cardGame.addEventListener("click", function(event) {
     } 
 });
 
+// shuffle card function, randomly replace icon on cards
+function shuffleCards() {
+    const cards = document.querySelectorAll(".card-back img");
+    for (let i = 0; i < cards.length; i++) {
+        let random = Math.floor(Math.random() * (cards.length - 1));
 
+        let a = cards[i].src;
+        cards[i].src = cards[random].src;
+        cards[random].src =  a;
+      }
+}
+
+//hide card, when card is open
 function hideCard(x, y) {
     if (x.classList.contains("front-inactive") && y.classList.contains("back-active")) {
         x.classList.remove("front-inactive");
@@ -101,12 +98,7 @@ function hideCard(x, y) {
     }
 }
 
-
 //set timer
-const time = document.querySelector(".timer");
-let seconds = 0;
-let minutes = 0;
-
 function counter() {
     seconds++;
     if (seconds >= 60) {
@@ -120,4 +112,12 @@ function counter() {
 function showTime() {
     setTimeout(counter, 1000);
 }
-showTime();    
+
+function init() {
+    gameRound = 2;
+    moves = 0;
+    seconds = 0;
+    minutes = 0;
+    showTime();
+    shuffleCards();
+}
