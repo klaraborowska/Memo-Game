@@ -1,3 +1,4 @@
+const cardGame = document.querySelector(".card-list");
 
 // shuffle card when click on refresh button
 
@@ -17,5 +18,17 @@ function shuffleCards() {
       }
 }
 
+//show card on click
+cardGame.addEventListener("click", function(event) {
+    if (event.target.nodeName === "DIV") {
+        showCard(event.target, event.target.nextElementSibling);
+    }
+});
 
-
+//function show card
+function showCard(x, y) {
+    if (!x.classList.contains("front-inactive") && !y.classList.contains("back-active")) {
+        x.classList.add("front-inactive");
+        y.classList.add("back-active");
+    }
+}

@@ -100,10 +100,10 @@ html {
       background-color:#fff;
   }
 
-  .card:hover .card-front {
+  .front-inactive {
       transform: rotateY(-180deg);
   }
 
-  .card:hover .card-back {
+  .back-active {
     transform: rotateY(0);
 }
