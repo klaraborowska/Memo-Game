@@ -4,27 +4,11 @@ const time = document.querySelector(".timer");
 let seconds, minutes, gameRound, moves, previousSrc;
 
 init();
+showTime();
 
 // reset game settings when click on refresh button
 document.querySelector(".restart-button").addEventListener("click", function() {
-    shuffleCards();
-
-    const cardFront = document.querySelectorAll(".card-front");
-    const cardBack = document.querySelectorAll(".card-back");
-    for (let i = 0; i < cardFront.length; i++) {
-        hideCard(cardFront[i], cardBack[i]);
-    }
-    
-    moves = 0;
-    document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
-    gameRound = 2;
-
-    star[0].classList.remove("hidden-star");
-    star[1].classList.remove("hidden-star");
-    star[2].classList.remove("hidden-star");
-
-    seconds = 0;
-    minutes = 0;
+    init();
 });
 
 
@@ -45,24 +29,12 @@ cardGame.addEventListener("click", function(event) {
 
         //happens, when two cards are open
         if (gameRound == 0) {
-
             //reset gameround
             gameRound = 2;
 
             //add one move
             moves += 1;
             document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
-            
-            switch(moves) {
-                case 13:
-                star[2].classList.add("hidden-star");
-                break;
-                case 22:
-                star[1].classList.add("hidden-star");
-                break;
-                case 30:
-                star[0].classList.add("hidden-star");
-            }
 
             //compares, if cards have the same icons, if not, closes the cards
             if (previousSrc !== back.firstElementChild.src) {
@@ -70,6 +42,7 @@ cardGame.addEventListener("click", function(event) {
                 setTimeout(hideCard, 1000, previousFront, previousBack);
             }
         }
+        hideStars()
        
         //store parameteres to compare cards in game round
         previousSrc = back.firstElementChild.src;
@@ -77,6 +50,27 @@ cardGame.addEventListener("click", function(event) {
         previousBack = back;
     } 
 });
+
+
+
+//start the game
+function init() {
+    gameRound = 2;
+    moves = 0;
+    seconds = 0;
+    minutes = 0;
+    shuffleCards();
+    document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
+    star[0].classList.remove("hidden-star");
+    star[1].classList.remove("hidden-star");
+    star[2].classList.remove("hidden-star");
+
+    const cardFront = document.querySelectorAll(".card-front");
+    const cardBack = document.querySelectorAll(".card-back");
+    for (let i = 0; i < cardFront.length; i++) {
+        hideCard(cardFront[i], cardBack[i]);
+    }
+}
 
 // shuffle card function, randomly replace icon on cards
 function shuffleCards() {
@@ -113,11 +107,16 @@ function showTime() {
     setTimeout(counter, 1000);
 }
 
-function init() {
-    gameRound = 2;
-    moves = 0;
-    seconds = 0;
-    minutes = 0;
-    showTime();
-    shuffleCards();
+//hide stars
+function hideStars() {
+    switch(moves) {
+        case 13:
+        star[2].classList.add("hidden-star");
+        break;
+        case 22:
+        star[1].classList.add("hidden-star");
+        break;
+        case 30:
+        star[0].classList.add("hidden-star");
+    }
 }
