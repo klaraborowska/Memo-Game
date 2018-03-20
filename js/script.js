@@ -51,10 +51,6 @@ cardGame.addEventListener("click", function(event) {
                 if (pairs == 0) {
                     winner.classList.remove("banner-hidden");
                     document.querySelector(".moves-number").innerHTML = moves;
-                    if (stars < 0) {
-                        stars === 0;
-                        document.querySelector(".stars-number").innerHTML = stars;
-                    }
                 }
             }
         }
@@ -129,17 +125,23 @@ function showTime() {
 
 //hide stars
 function hideStars() {
+    document.querySelector(".stars-number").innerHTML = stars;
+  
     switch(moves) {
         case 13:
         star[2].classList.add("hidden-star");
-        stars -= 1;
+        stars = 2;
+        console.log(stars);
         break;
         case 22:
         star[1].classList.add("hidden-star");
-        stars -= 1;
+        stars = 1;
+        console.log(stars);
         break;
         case 30:
         star[0].classList.add("hidden-star");
-        stars -= 1;
+        stars = 0;
+        console.log(stars);
     }
+    
 }
