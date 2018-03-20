@@ -75,6 +75,7 @@ html {
       position: relative;
       perspective: 400px;
       cursor: pointer;
+      transition: all 0.5s;
   }
 
   .card-side {
@@ -110,4 +111,23 @@ html {
 
 .hidden-star {
     visibility: hidden;
+}
+
+.card-match {
+    animation: cardMatch 0.5s;
+    background-color: #45415a;
+}
+
+@keyframes cardMatch {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

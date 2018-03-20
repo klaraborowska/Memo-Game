@@ -40,6 +40,9 @@ cardGame.addEventListener("click", function(event) {
             if (previousSrc !== back.firstElementChild.src) {
                 setTimeout(hideCard, 1000, front, back);
                 setTimeout(hideCard, 1000, previousFront, previousBack);
+            } else {
+                back.classList.add("card-match");
+                previousBack.classList.add("card-match");
             }
         }
         hideStars()
@@ -65,9 +68,11 @@ function init() {
     star[1].classList.remove("hidden-star");
     star[2].classList.remove("hidden-star");
 
+
     const cardFront = document.querySelectorAll(".card-front");
     const cardBack = document.querySelectorAll(".card-back");
     for (let i = 0; i < cardFront.length; i++) {
+        cardBack[i].classList.remove("card-match");
         hideCard(cardFront[i], cardBack[i]);
     }
 }
