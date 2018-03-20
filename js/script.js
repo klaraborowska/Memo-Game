@@ -1,7 +1,10 @@
 const cardGame = document.querySelector(".card-list");
 const star = document.querySelectorAll(".flaticon-favorite");
 const time = document.querySelector(".timer");
-let seconds, minutes, gameRound, moves, previousSrc;
+const cardFront = document.querySelectorAll(".card-front");
+const cardBack = document.querySelectorAll(".card-back");
+const winner = document.querySelector(".winner-banner");
+let seconds, minutes, gameRound, moves, previousSrc, pairs, stars;
 
 init();
 showTime();
@@ -36,6 +39,7 @@ cardGame.addEventListener("click", function(event) {
             moves += 1;
             document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
 
+
             //compares, if cards have the same icons, if not, closes the cards
             if (previousSrc !== back.firstElementChild.src) {
                 setTimeout(hideCard, 1000, front, back);
@@ -43,10 +47,19 @@ cardGame.addEventListener("click", function(event) {
             } else {
                 back.classList.add("card-match");
                 previousBack.classList.add("card-match");
+                pairs -= 1;
+                if (pairs == 0) {
+                    winner.classList.remove("banner-hidden");
+                    document.querySelector(".moves-number").innerHTML = moves;
+                    if (stars < 0) {
+                        stars === 0;
+                        document.querySelector(".stars-number").innerHTML = stars;
+                    }
+                }
             }
         }
         hideStars()
-       
+
         //store parameteres to compare cards in game round
         previousSrc = back.firstElementChild.src;
         previousFront = front;
@@ -54,7 +67,10 @@ cardGame.addEventListener("click", function(event) {
     } 
 });
 
-
+document.querySelector(".play-again").addEventListener("click", function() {
+    winner.classList.add("banner-hidden");
+    init();
+});
 
 //start the game
 function init() {
@@ -62,15 +78,14 @@ function init() {
     moves = 0;
     seconds = 0;
     minutes = 0;
+    pairs = 8;
+    stars = 3;
     shuffleCards();
     document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
     star[0].classList.remove("hidden-star");
     star[1].classList.remove("hidden-star");
     star[2].classList.remove("hidden-star");
 
-
-    const cardFront = document.querySelectorAll(".card-front");
-    const cardBack = document.querySelectorAll(".card-back");
     for (let i = 0; i < cardFront.length; i++) {
         cardBack[i].classList.remove("card-match");
         hideCard(cardFront[i], cardBack[i]);
@@ -117,11 +132,14 @@ function hideStars() {
     switch(moves) {
         case 13:
         star[2].classList.add("hidden-star");
+        stars -= 1;
         break;
         case 22:
         star[1].classList.add("hidden-star");
+        stars -= 1;
         break;
         case 30:
         star[0].classList.add("hidden-star");
+        stars -= 1;
     }
 }
