@@ -105,7 +105,7 @@ html {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
 
 .banner-hidden {
@@ -118,6 +118,15 @@ html {
     width: 150px;
 }
 
+/***** FOOTER *****/
+.footer {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.copyrights {
+    padding-bottom: 10px;
+}
 
 /**** FOR TESTING *****/
 

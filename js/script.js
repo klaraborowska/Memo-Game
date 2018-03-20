@@ -1,6 +1,4 @@
-const cardGame = document.querySelector(".card-list");
 const star = document.querySelectorAll(".flaticon-favorite");
-const time = document.querySelector(".timer");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
@@ -10,20 +8,17 @@ init();
 showTime();
 
 // reset game settings when click on refresh button
-document.querySelector(".restart-button").addEventListener("click", function() {
-    init();
-});
+document.querySelector(".restart-button").addEventListener("click", init);
 
-
-//add event listener to card list
-cardGame.addEventListener("click", function(event) {
+//main event listener (click on card)
+document.querySelector(".card-list").addEventListener("click", function(event) {
     const front = event.target;
     const back = event.target.nextElementSibling;
 
     //check if the clicked element is a div with a class "card-front"
     if (front.nodeName === "DIV" && front.classList.contains("card-front")) {
 
-        //check if the clickd element doesn't have the class "front-inacitive" (in order not to add the second the same class)
+        //open the clicked card
         if (!front.classList.contains("front-inactive")) {
             front.classList.add("front-inactive");
             back.classList.add("back-active");
@@ -32,13 +27,9 @@ cardGame.addEventListener("click", function(event) {
 
         //happens, when two cards are open
         if (gameRound == 0) {
-            //reset gameround
             gameRound = 2;
-
-            //add one move
             moves += 1;
             document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
-
 
             //compares, if cards have the same icons, if not, closes the cards
             if (previousSrc !== back.firstElementChild.src) {
@@ -100,7 +91,6 @@ function shuffleCards() {
       }
 }
 
-//hide card, when card is open
 function hideCard(x, y) {
     if (x.classList.contains("front-inactive") && y.classList.contains("back-active")) {
         x.classList.remove("front-inactive");
@@ -115,7 +105,7 @@ function counter() {
         seconds = 0;
         minutes += 1;
     }
-	time.innerHTML = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+	document.querySelector(".timer").innerHTML = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
     showTime();
 }
 
@@ -123,25 +113,19 @@ function showTime() {
     setTimeout(counter, 1000);
 }
 
-//hide stars
 function hideStars() {
-    document.querySelector(".stars-number").innerHTML = stars;
-  
     switch(moves) {
-        case 13:
-        star[2].classList.add("hidden-star");
+        case 16:
         stars = 2;
-        console.log(stars);
+        star[2].classList.add("hidden-star");
         break;
-        case 22:
-        star[1].classList.add("hidden-star");
+        case 24:
         stars = 1;
-        console.log(stars);
+        star[1].classList.add("hidden-star");
         break;
         case 30:
-        star[0].classList.add("hidden-star");
         stars = 0;
-        console.log(stars);
+        star[0].classList.add("hidden-star");
     }
-    
+    document.querySelector(".stars-number").innerHTML = stars;
 }
