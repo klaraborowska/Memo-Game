@@ -2,7 +2,7 @@ const star = document.querySelectorAll(".flaticon-favorite");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
-let seconds, minutes, gameRound, moves, previousSrc, pairs, stars;
+let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime;
 
 init();
 showTime();
@@ -101,7 +101,8 @@ function hideCard(x, y) {
 
 //set timer
 function counter() {
-    const currentTime = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    if (pairs > 0) {
+        currentTime = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
     seconds++;
     if (seconds >= 60) {
         seconds = 0;
@@ -109,10 +110,15 @@ function counter() {
     }
 	document.querySelector(".timer").innerHTML = currentTime;
     showTime();
+    }
 }
 
 function showTime() {
     setTimeout(counter, 1000);
+}
+
+function stopCounter() {
+    
 }
 
 function hideStars() {
