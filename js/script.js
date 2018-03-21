@@ -2,10 +2,9 @@ const star = document.querySelectorAll(".flaticon-favorite");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
-let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime;
+let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock;
 
 init();
-showTime();
 
 // reset game settings when click on refresh button
 document.querySelector(".restart-button").addEventListener("click", init);
@@ -43,6 +42,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
                     winner.classList.remove("banner-hidden");
                     document.querySelector(".moves-number").innerHTML = moves;
                     document.querySelector(".final-time").innerHTML = currentTime;
+                    stopTime();
                 }
             }
         }
@@ -64,10 +64,12 @@ document.querySelector(".play-again").addEventListener("click", function() {
 function init() {
     gameRound = 2;
     moves = 0;
+    pairs = 8;
     seconds = 0;
     minutes = 0;
-    pairs = 8;
     stars = 3;
+    stopTime();
+    showTime();
     shuffleCards();
     document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
     star[0].classList.remove("star-light");
@@ -101,24 +103,22 @@ function hideCard(x, y) {
 
 //set timer
 function counter() {
-    if (pairs > 0) {
-        currentTime = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
     seconds++;
     if (seconds >= 60) {
         seconds = 0;
         minutes += 1;
     }
-	document.querySelector(".timer").innerHTML = currentTime;
+    currentTime = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    document.querySelector(".timer").innerHTML = currentTime;
     showTime();
-    }
 }
 
 function showTime() {
-    setTimeout(counter, 1000);
-}
+    clock = setTimeout(counter, 1000);
+} 
 
-function stopCounter() {
-    
+function stopTime() {
+    clearTimeout(clock);
 }
 
 function hideStars() {
