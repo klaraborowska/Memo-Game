@@ -69,9 +69,9 @@ function init() {
     stars = 3;
     shuffleCards();
     document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
-    star[0].classList.remove("hidden-star");
-    star[1].classList.remove("hidden-star");
-    star[2].classList.remove("hidden-star");
+    star[0].classList.remove("star-light");
+    star[1].classList.remove("star-light");
+    star[2].classList.remove("star-light");
 
     for (let i = 0; i < cardFront.length; i++) {
         cardBack[i].classList.remove("card-match");
@@ -117,15 +117,15 @@ function hideStars() {
     switch(moves) {
         case 16:
         stars = 2;
-        star[2].classList.add("hidden-star");
+        star[2].classList.add("star-light");
         break;
         case 24:
         stars = 1;
-        star[1].classList.add("hidden-star");
+        star[1].classList.add("star-light");
         break;
         case 30:
         stars = 0;
-        star[0].classList.add("hidden-star");
+        star[0].classList.add("star-light");
     }
     document.querySelector(".stars-number").innerHTML = stars;
 }
