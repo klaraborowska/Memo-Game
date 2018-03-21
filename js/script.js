@@ -42,6 +42,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
                 if (pairs == 0) {
                     winner.classList.remove("banner-hidden");
                     document.querySelector(".moves-number").innerHTML = moves;
+                    document.querySelector(".final-time").innerHTML = currentTime;
                 }
             }
         }
@@ -100,12 +101,13 @@ function hideCard(x, y) {
 
 //set timer
 function counter() {
+    const currentTime = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
     seconds++;
     if (seconds >= 60) {
         seconds = 0;
         minutes += 1;
     }
-	document.querySelector(".timer").innerHTML = (minutes > 0 ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+	document.querySelector(".timer").innerHTML = currentTime;
     showTime();
 }
 
