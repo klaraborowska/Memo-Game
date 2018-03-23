@@ -2,6 +2,8 @@
 Second project of Google Front-End Web Developer Nanodegree Scholarship at Udacity. 
 Live version of the game: https://klaraborowska.github.io/Memo-game/
 
+![Screenshot](screenshot.png)
+
 ## How To Play
 Flip over two hidden cards at a time to locate the ones that match!
 
