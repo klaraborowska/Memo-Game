@@ -2,7 +2,7 @@ const star = document.querySelectorAll(".flaticon-favorite");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
-let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock;
+let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock, click;
 
 init();
 
@@ -15,7 +15,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
     const back = event.target.nextElementSibling;
 
     //check if the clicked element is a div with a class "card-front"
-    if (front.nodeName === "DIV" && front.classList.contains("card-front")) {
+    if (front.nodeName === "DIV" && front.classList.contains("card-front") && click == true) {
 
         //open the clicked card
         if (!front.classList.contains("front-inactive")) {
@@ -26,6 +26,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
 
         //happens, when two cards are open
         if (gameRound == 0) {
+            click = false;
             gameRound = 2;
             moves += 1;
             document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
@@ -33,11 +34,12 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
             //compares, if cards have the same icons, if not, closes the cards
             if (previousSrc !== back.firstElementChild.src) {
                 setTimeout(hideCard, 1000, front, back);
-                setTimeout(hideCard, 1000, previousFront, previousBack);
+                setTimeout(hideCard, 1000, previousFront, previousBack); 
             } else {
                 back.classList.add("card-match");
                 previousBack.classList.add("card-match");
                 pairs -= 1;
+                click = true;
                 if (pairs == 0) {
                     winner.classList.remove("banner-hidden");
                     document.querySelector(".moves-number").innerHTML = moves;
@@ -46,7 +48,8 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
                 }
             }
         }
-        hideStars()
+        hideStars();
+
 
         //store parameteres to compare cards in game round
         previousSrc = back.firstElementChild.src;
@@ -62,6 +65,7 @@ document.querySelector(".play-again").addEventListener("click", function() {
 
 //start the game
 function init() {
+    click = true;
     gameRound = 2;
     moves = 0;
     pairs = 8;
@@ -98,6 +102,7 @@ function hideCard(x, y) {
     if (x.classList.contains("front-inactive") && y.classList.contains("back-active")) {
         x.classList.remove("front-inactive");
         y.classList.remove("back-active");
+        click = true;
     }
 }
 
