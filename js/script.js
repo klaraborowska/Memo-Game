@@ -16,7 +16,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
 
     //check if the clicked element is a div with a class "card-front"
     if (front.nodeName === "DIV" && front.classList.contains("card-front") && click == true) {
-
+        
         //open the clicked card
         if (!front.classList.contains("front-inactive")) {
             front.classList.add("front-inactive");
