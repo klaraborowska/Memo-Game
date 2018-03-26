@@ -2,7 +2,7 @@ const star = document.querySelectorAll(".flaticon-favorite");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
-let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock, click;
+let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock, click, start;
 
 init();
 
@@ -13,10 +13,13 @@ document.querySelector(".restart-button").addEventListener("click", init);
 document.querySelector(".card-list").addEventListener("click", function(event) {
     const front = event.target;
     const back = event.target.nextElementSibling;
-
+    
     //check if the clicked element is a div with a class "card-front"
     if (front.nodeName === "DIV" && front.classList.contains("card-front") && click == true) {
-        
+        if (start) {
+            showTime();
+        }
+        start = false;
         //open the clicked card
         if (!front.classList.contains("front-inactive")) {
             front.classList.add("front-inactive");
@@ -65,6 +68,7 @@ document.querySelector(".play-again").addEventListener("click", function() {
 
 //start the game
 function init() {
+    start = true;
     click = true;
     gameRound = 2;
     moves = 0;
@@ -72,8 +76,8 @@ function init() {
     seconds = 0;
     minutes = 0;
     stars = 3;
+    document.querySelector(".timer").innerHTML = "00:00";
     stopTime();
-    showTime();
     shuffleCards();
     document.querySelector(".moves-counter").innerHTML ="Moves: " + moves;
     star[0].classList.remove("star-light");
