@@ -2,7 +2,7 @@ const star = document.querySelectorAll(".flaticon-favorite");
 const cardFront = document.querySelectorAll(".card-front");
 const cardBack = document.querySelectorAll(".card-back");
 const winner = document.querySelector(".winner-banner");
-let seconds, minutes, gameRound, moves, previousSrc, pairs, stars, currentTime, clock, click, start;
+let seconds, minutes, gameRound, moves, previousSrc, previousFront, previousBack, pairs, stars, currentTime, clock, click, start;
 
 init();
 
@@ -15,7 +15,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
     const back = event.target.nextElementSibling;
     
     //check if the clicked element is a div with a class "card-front"
-    if (front.nodeName === "DIV" && front.classList.contains("card-front") && click == true) {
+    if (front.nodeName === "DIV" && front.classList.contains("card-front") && click === true) {
         if (start) {
             showTime();
         }
@@ -28,7 +28,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
         }
 
         //happens, when two cards are open
-        if (gameRound == 0) {
+        if (gameRound === 0) {
             click = false;
             gameRound = 2;
             moves += 1;
@@ -43,7 +43,7 @@ document.querySelector(".card-list").addEventListener("click", function(event) {
                 previousBack.classList.add("card-match");
                 pairs -= 1;
                 click = true;
-                if (pairs == 0) {
+                if (pairs === 0) {
                     winner.classList.remove("banner-hidden");
                     document.querySelector(".moves-number").innerHTML = moves;
                     document.querySelector(".final-time").innerHTML = currentTime;
