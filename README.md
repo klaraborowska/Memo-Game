@@ -1,6 +1,6 @@
 # Memory Game
 Third project of Google Front-End Web Developer Nanodegree Scholarship at Udacity. 
-Live version of the game: https://klaraborowska.github.io/Memo-Game/
+Live version of the game: https://klaraborowska.github.io/memo-game/
 
 ![Screenshot](https://github.com/klaraborowska/Memo-game/blob/master/src/assets/img/screenshot.png)
 
