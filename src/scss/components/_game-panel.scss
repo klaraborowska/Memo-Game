@@ -1,0 +1,36 @@
+.game {
+  padding: 50px;
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 30px;
+
+    @media only screen and (max-width: 800px) {
+      width: 80vw;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    @media only screen and (max-width: 450px) {
+      font-size: 0.8em;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    padding: 40px 10px 10px;
+  }
+
+  &__star-icon {
+    color: $c-yellow-dark;
+  }
+
+  &__restart-icon {
+    color: $c-text-light;
+  }
+}
+
+.js_star-light {
+  color: $c-yellow-light;
+}

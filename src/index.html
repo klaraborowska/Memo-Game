@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>Memory game</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <h1 class="header__title">Memory game</h1>
+            </header>
+            
+            <section class="game">
+                <div class="game__stats">
+                    <div>
+                        <i class="flaticon-favorite game__star-icon js_star"></i>
+                        <i class="flaticon-favorite game__star-icon js_star"></i>
+                        <i class="flaticon-favorite game__star-icon js_star"></i>
+                    </div>
+                    <span>Moves: <span class="js_moves">0</span></span>
+                    <time class="js_timer">00:00</time>
+                    <button type="button" class="button button--restart js_restart">
+                        <i class="flaticon-exchange game__restart-icon"></i>
+                    </button>
+                </div>
+                <ul class="game__container js_game">
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/1.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/1.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/2.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/2.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/3.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/3.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/4.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/4.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/5.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/5.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/6.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/6.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/7.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/7.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/8.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="card__side card__side--front js_card-front"></div>
+                        <div class="card__side card__side--back js_card-back">
+                            <img src="assets/img/8.svg" alt="" class="js_card-img">
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <section class="pop-up js_pop-up js_banner-hidden">
+            <img src="assets/img/comet.svg" alt="" class="pop-up__icon">
+            <h2 class="pop-up__title">Congratulations!</h2>
+            <p class="pop-up__details">You won the game with <span class="js_moves">20</span> moves. Stars: <span class="js_stars-number">3</span>, time: <span class="js_final-time">00:25</span>. Great job!</p>
+            <button type="button" class="button button--play js_play">Play again</button>
+        </section>
+        <footer class="footer">
+            <div class="footer__copyrights">© 2018 Created by Klara Borowska for Google/Udacity FEWD Nanodegree</div>
+            <div class="footer__copyrights">Icons designed by Smashicons from Flaticon</div>
+        </footer> 
+        
+        <script src="main.js"></script>
+    </body>
+</html>

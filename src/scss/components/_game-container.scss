@@ -1,0 +1,22 @@
+.game__container {
+	margin: 10px auto;
+	padding: 30px;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(4, 125px);
+	grid-template-rows: repeat(4, 125px);
+	grid-gap: 30px;
+	justify-content: center;
+	align-content: center;
+	background-color: $c-grey-light;
+	border-radius: $radius;
+	box-shadow: $shadows;
+	
+	@media only screen and (max-width: 800px) {
+		width: 80vw;
+		height: 80vw;
+		grid-template-columns: repeat(4, 15vw);
+		grid-template-rows: repeat(4, 15vw);
+		grid-gap: 15px;
+	}
+}

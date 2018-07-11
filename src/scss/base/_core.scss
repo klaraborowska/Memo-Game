@@ -1,0 +1,32 @@
+$img-path: "../assets/img/";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html,
+h1,
+h2,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(#{$img-path}bg.jpg) right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  @media only screen and (max-width: 600px) {
+    background-image: url(#{$img-path}bg-min.jpg);
+  }
+}
+
+.wrapper {
+  max-width: 750px;
+  margin: 20px auto;
+  text-align: center;
+}

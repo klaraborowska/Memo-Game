@@ -1,0 +1,19 @@
+.button {
+  background-color: transparent;
+  cursor: pointer;
+
+  &--restart {
+    border: none;
+  }
+
+  &--play {
+    padding: 7px 20px;
+    border-radius: 5px;
+    border: 2px solid $c-yellow-dark;
+    transition: $transitions-fast;
+
+    &:hover {
+      background-color: $c-yellow-medium;
+    }
+  }
+}
